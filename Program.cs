@@ -1,11 +1,17 @@
 using CarInventoryAPI.Models;
+using CarInventoryAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);   
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+ builder.Services
+            .AddScoped<ICarTypeSercvice ,CarTypesService>();
+
+        builder.Services.AddControllers();
 
 string connStr = builder.Configuration.GetConnectionString("CarsInventoryDbContext");
 
